@@ -3,13 +3,14 @@
     Date        : ons  8 jun 2016 10:10:56 CEST
     File        : ser_comm1.c
     Reference   : -
-    Description : Send serial data. Use argument to create message.
-                  <1> : create MIB_WriteRequest
-                  <2> : create PingRequest
+    Description : The program is used to send commands to ST7580 Power Line Modem.
 
 		  Ex. how to run:
-                    ./comm2 1
-                    ./comm2 2
+                    ./ser_com1 1
+                    ./ser_com1 2
+
+                  <1> : create MIB_WriteRequest
+                  <2> : create PingRequest
 
 
                   To compile:
@@ -19,10 +20,10 @@
                       gcc -std=gnu99 uart.c -o uart.o -c -I .
                       gcc -std=gnu99 messages.c -o messages.o -c -I .
                       gcc -std=gnu99 ser_comm1.c -o ser_comm1.o -c -I .
-                      gcc -std=gnu99 ser_comm1.o common.o uart.o messages.o -o ser_comm1
+                      gcc -std=gnu99 ser_comm1.o common.o uart.o messages.o -o ser_com1
 
 		    or:
-		      make p1
+		      make
 */
 
 #include <stdio.h>
