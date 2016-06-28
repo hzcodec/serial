@@ -3,7 +3,7 @@
     Date        : ons  8 jun 2016 10:10:56 CEST
     File        : ser_comm1.c
     Reference   : -
-    Description : The program is used to send commands to ST7580 Power Line Modem.
+    Description : The program sends commands to ST7580 Power Line Modem.
                   
                   The protocol is a local frame format according to the following:
                   +------+---------+-----------+-------------------+-----------+
