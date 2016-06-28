@@ -13,6 +13,7 @@
 #include <errno.h>      /* ERROR Number Definitions           */
 #include <inttypes.h>   /* uint8_t                            */
 #include <sys/ioctl.h>  /* rtsFlag = TIOCM_RTS                */ 
+#include "common.h"
 
 extern int fd;
 
@@ -151,7 +152,7 @@ void checkBaudRate(struct termios* portSettings)
      case B19200:  outputSpeed = "19200 Baud"; break;
      case B38400:  outputSpeed = "38400 Baud"; break;
   }
-  printf("    Output Baud rate : %s\n", outputSpeed);
+  printf("    %sOutput Baud rate : %s %s\n", KBLU, outputSpeed, KNRM);
 }
 
 
