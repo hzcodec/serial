@@ -33,7 +33,7 @@ uint8_t dataPingRequest[] = {0xde, 0xad, 0xbe, 0xef};
 
 void createMibWriteRequestMessage(Message* m, int length)
 {
-  printf("*** Message: MIB_WriteRequest ***\n");
+  printf("Message: MIB_WriteRequest\n");
   m->stx      = 0x02;
   m->length   = (uint8_t)MIB_WriteRequest_Length;
   m->command  = MIB_WriteRequest;
@@ -45,7 +45,7 @@ void createMibWriteRequestMessage(Message* m, int length)
 
 void createDlDataRequestMessage(Message* m, int length)
 {
-  printf("*** Message: DL_DataWriteRequest ***\n");
+  printf("Message: DL_DataWriteRequest\n");
   m->stx      = 0x02;
   m->length   = (uint8_t)DL_DataRequest_Length;
   m->command  = DL_DataRequest;
@@ -57,7 +57,7 @@ void createDlDataRequestMessage(Message* m, int length)
 
 void createPingRequestMessage(Message* m, int length)
 {
-  printf("*** Message: PingRequest ***\n");
+  printf("Message: PingRequest\n");
   m->stx      = 0x02;
   m->length   = (uint8_t)PingRequest_Length;
   m->command  = PingRequest;

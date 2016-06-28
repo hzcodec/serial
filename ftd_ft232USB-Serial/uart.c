@@ -40,8 +40,6 @@ int toggleDTR(int timeValue)
 
 //  useconds_t us;
 //  us = 100;
-  printf("Toggle DTR\n");
-
   ioctl(fd, TIOCMGET, &status);
 
   status &= ~TIOCM_DTR;
@@ -111,8 +109,6 @@ void openSerialPort(struct termios* portSettings)
 
 void configSerialPort(struct termios* portSettings)
 {
-  printf("%s():\n", __func__);
-
   // get port parameters
   tcgetattr(fd, portSettings);
 
@@ -152,7 +148,7 @@ void checkBaudRate(struct termios* portSettings)
      case B19200:  outputSpeed = "19200 Baud"; break;
      case B38400:  outputSpeed = "38400 Baud"; break;
   }
-  printf("    %sOutput Baud rate : %s %s\n", KBLU, outputSpeed, KNRM);
+  printf("%sOutput Baud rate : %s %s\n", KBLU, outputSpeed, KNRM);
 }
 
 
