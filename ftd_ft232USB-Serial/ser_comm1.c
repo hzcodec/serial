@@ -64,6 +64,14 @@ int main(int argc, char* argv[])
   int dataLength = 0;  // length of data
   Message msg;
 
+  // Open up device for read/write and check status. NOCTTY - not controlling terminal
+  fd = open(MODEM_DEVICE, O_RDWR | O_NOCTTY);
+  if (fd < 0)
+  {
+    perror("Error, ttyUSB0 could not be opened!");
+    exit(-1);
+  }
+
   // if too few arguments then jump out
   if (argc < 2)
   {
@@ -95,14 +103,6 @@ int main(int argc, char* argv[])
       exit(-1);
   }  
 
-  // Open up device for read/write and check status. NOCTTY - not controlling terminal
-  fd = open(MODEM_DEVICE, O_RDWR | O_NOCTTY);
-  if (fd < 0)
-  {
-    perror("Error, ttyUSB0 could not be opened!");
-    exit(-1);
-  }
-  
   configSerialPort(&serialPortSettings);
   openSerialPort(pSerialPortSettings);
 
