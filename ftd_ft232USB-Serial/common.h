@@ -1,13 +1,17 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-// define commands
+// define commands for the local frame format
 #define MIB_WriteRequest        0x08
 #define MIB_WriteRequest_Length 15
+
+#define DL_DataRequest          0x50
+#define DL_DataRequest_Length   6
 
 #define PingRequest             0x2c
 #define PingRequest_Length      4
 
+// misc defines
 #define MAX_DATA_MESSAGE_SIZE 25
 #define MODEM_DEVICE "/dev/ttyUSB0"
 

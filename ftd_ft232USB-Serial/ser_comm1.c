@@ -4,6 +4,11 @@
     File        : ser_comm1.c
     Reference   : -
     Description : The program is used to send commands to ST7580 Power Line Modem.
+                  
+                  The protocol is a local frame format according to the following:
+                  +------+---------+-----------+-------------------+-----------+
+                  | STX  | Length  | Command   | Payload           | Checksum  |
+                  +------+---------+-----------+-------------------+-----------+
 
 		  To communicate via a serial link use:
                     Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
@@ -77,7 +82,8 @@ int main(int argc, char* argv[])
   {
     printf("To few arguments!\n");
     printf("<1> : create MIB_WriteRequest\n");
-    printf("<2> : create PingRequest\n");
+    printf("<2> : create DL_DataRequest\n");
+    printf("<9> : create PingRequest\n");
     exit(-1);
   }
 
@@ -95,6 +101,10 @@ int main(int argc, char* argv[])
       createMibWriteRequestMessage(&msg, dataLength);
       break;
     case 2:
+      dataLength = DL_DataRequest_Length;
+      createDlDataRequestMessage(&msg, dataLength);
+      break;
+    case 9:
       dataLength = PingRequest_Length;
       createPingRequestMessage(&msg, dataLength);
       break;
