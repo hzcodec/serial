@@ -1,0 +1,4 @@
+*.o
+*.swp
+ser_com1
+tags
