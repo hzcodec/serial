@@ -3,8 +3,9 @@
 
 // define commands
 #define MIB_WriteRequest        0x08
-#define PingRequest             0x2c
 #define MIB_WriteRequest_Length 15
+
+#define PingRequest             0x2c
 #define PingRequest_Length      4
 
 #define MAX_DATA_MESSAGE_SIZE 25
