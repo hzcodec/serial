@@ -7,6 +7,12 @@
 
 		  To communicate via a serial link use:
                     Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
+                    Red    - Vcc
+                    Black  - GND
+                    Brown  - CTS
+                    Green  - RTS
+                    Yellow - RxD
+                    Orange - TxD
 
 		  Ex. how to run:
                     ./ser_com1 1
