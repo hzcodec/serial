@@ -5,6 +5,9 @@
     Reference   : -
     Description : The program is used to send commands to ST7580 Power Line Modem.
 
+		  To communicate via a serial link use:
+                    Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
+
 		  Ex. how to run:
                     ./ser_com1 1
                     ./ser_com1 2
