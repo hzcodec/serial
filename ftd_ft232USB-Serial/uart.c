@@ -148,7 +148,7 @@ void checkBaudRate(struct termios* portSettings)
      case B19200:  outputSpeed = "19200 Baud"; break;
      case B38400:  outputSpeed = "38400 Baud"; break;
   }
-  printf("%sOutput Baud rate : %s %s\n", KBLU, outputSpeed, KNRM);
+  printf("%sOutput Baud rate : %s %s\n", KGRN, outputSpeed, KNRM);
 }
 
 

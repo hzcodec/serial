@@ -120,7 +120,7 @@ int main(int argc, char* argv[])
   checkBaudRate(pSerialPortSettings);
 
   // RTS control
-  toggleRTS(ONE_SECOND);  // 1 s delay
+  toggleRTS(10000);  // 1 s delay
 
   printMessage(&msg, dataLength);
 
