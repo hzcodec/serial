@@ -19,8 +19,10 @@ void setDTR();
 int toggleDTR(int timeValue);
 
 
+void setDTR();
+int toggleDTR(int timeValue);
 int setRTS(int rtsValue);
-int toggelRTS(int timeValue);
+int toggleRTS(int timeValue);
 void openSerialPort(struct termios* portSettings);
 void configSerialPort(struct termios* portSettings);
 void checkBaudRate(struct termios* portSettings);

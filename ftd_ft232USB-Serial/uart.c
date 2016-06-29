@@ -74,15 +74,15 @@ int setRTS(int rtsValue)
 }
 
 
-int toggelRTS(int timeValue)
+int toggleRTS(int timeValue)
 {
   int rv;
   int rtsFlag = TIOCM_RTS; // modem constant for RTS pin
 
   rv = ioctl(fd, TIOCMBIS, &rtsFlag);
-  sleep(timeValue);
+  usleep(timeValue);
   rv = ioctl(fd, TIOCMBIC, &rtsFlag);
-  sleep(timeValue);
+  usleep(timeValue);
   return rv;
 }
 

@@ -119,9 +119,8 @@ int main(int argc, char* argv[])
   // check current output baud rate and print out result
   checkBaudRate(pSerialPortSettings);
 
-  // DTR control
-  toggleDTR(ONE_SECOND);  // 1 s delay
-  setDTR();
+  // RTS control
+  toggleRTS(ONE_SECOND);  // 1 s delay
 
   printMessage(&msg, dataLength);
 
