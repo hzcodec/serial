@@ -24,10 +24,10 @@ uint8_t dataMibWriteRequest[] = {0x01,              // MIB object
                                  0x9b,0x58};        // FSK msb/lsb unique word
 
 
-//                           payload data, 0xbadc0ffea4
-uint8_t dataDlDataRequest[] = {0x04, 0xba, 0xdc, 0x0f, 0xfe, 0xa4};
+// 0x24 = 8PSK, payload data = 0xbadc0ffea4
+uint8_t dataDlDataRequest[] = {0x24, 0xba, 0xdc, 0x0f, 0xfe, 0xa4};
 
-//                           payload data, 0xdeadbeef
+// payload data, 0xdeadbeef
 uint8_t dataPingRequest[] = {0xde, 0xad, 0xbe, 0xef};
 
 

@@ -9,6 +9,12 @@
                   +------+---------+-----------+-------------------+-----------+
                   | STX  | Length  | Command   | Payload           | Checksum  |
                   +------+---------+-----------+-------------------+-----------+
+		   
+		   STX: Start of text delimiter
+		   Length:   Byte length of data field
+		   Command:  Command type code
+		   Payload:  Data to be sent
+		   Checksum: Checksum calculated on lenght, command and payload
 
 		  To communicate via a serial link use:
                     Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
