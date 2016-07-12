@@ -24,7 +24,8 @@
                     ./ser_com1 2
 
                   <1> : create MIB_WriteRequest
-                  <2> : create PingRequest
+                  <2> : create DL_DataRequest
+                  <9> : create PingRequest
 
 
                   To compile:
