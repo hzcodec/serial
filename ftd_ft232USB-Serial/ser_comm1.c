@@ -10,7 +10,7 @@
                   | STX  | Length  | Command   | Payload           | Checksum  |
                   +------+---------+-----------+-------------------+-----------+
 		   
-		   STX: Start of text delimiter
+		   STX:      Start of text delimiter
 		   Length:   Byte length of data field
 		   Command:  Command type code
 		   Payload:  Data to be sent
