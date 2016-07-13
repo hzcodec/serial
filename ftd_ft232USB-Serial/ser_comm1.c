@@ -16,6 +16,7 @@
 		   Payload:  Data to be sent
 		   Checksum: Checksum calculated on lenght, command and payload
 
+
 		  To communicate via a serial link use:
                     Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
                     Red    - Vcc
@@ -24,6 +25,21 @@
                     Green  - RTS
                     Yellow - RxD
                     Orange - TxD
+
+
+                  To check if, Ltd FT232 USB-Serial (UART) IC, is connected to USB:
+		    > lsusb
+
+		  This will give (N.B! devie ID may differ):
+                      Bus 003 Device 004: ID 0403:6001 Future Technology Devices International,
+		      Ltd FT232 USB-Serial (UART) IC
+
+		  Also check port:
+		    > ls /dev/ttyUSB*
+
+		  This will give:
+                      /dev/ttyUSB0
+
 
 		  Ex. how to run:
                     ./ser_com1 1
