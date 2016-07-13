@@ -61,6 +61,11 @@
 
 		    or:
 		      make
+
+
+		  Test run:
+		    A test run with v1.00 has been done. A result can be seen in figure
+		    serial_comm1.PNG.
 */
 
 #include <stdio.h>
@@ -143,7 +148,8 @@ int main(int argc, char* argv[])
   checkBaudRate(pSerialPortSettings);
 
   // RTS control
-  toggleRTS(10000);  // 1 s delay
+  setRTS(1);
+  setRTS(0);
 
   printMessage(&msg, dataLength);
 
