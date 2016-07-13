@@ -28,10 +28,13 @@ void calculateChecksum(uint8_t length, uint8_t command, uint8_t* data)
 
 void printHeadLine()
 {
-  printf("\n+-------------------------+\n");
-  printf("|    Serial Port Write    |\n");
-  printf("+-------------------------+\n");
+  printf("\n+-------------------------------------------------------------------------------+\n");
+  printf(" _____ __ __ _  _     __                   __\n");                                   
+  printf("(_  |   /|_ (_)/ \\   (_  _  __ o  _  |    /   _ __ __    __  o  _  _ _|_ o  _ __\n"); 
+  printf("__) |  / __)(_)\\_/   __)(/_ |  | (_| |    \\__(_)|||||||_|| | | (_ (_| |_ | (_)| |\n");
+  printf("\n+-------------------------------------------------------------------------------+\n");
 }
+
 
 void printMessage(Message* msg, int length)
 {
