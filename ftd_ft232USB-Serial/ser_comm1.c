@@ -67,8 +67,8 @@
 		    A test run with v1.00 has been done. A result can be seen in figure
 		    serial_comm1.PNG.
 
-                    N.B! Using baud rate less than 57600 does not work. This need to be check in spec
-		    if it's possible to reconfigure.
+                    N.B! Using baud rate less than 57600 does not work. Due to that pin BR0/BR1 on
+		    ST7580 is pulled up to VDDIO.
 */
 
 #include <stdio.h>
