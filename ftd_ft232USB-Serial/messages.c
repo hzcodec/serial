@@ -14,15 +14,15 @@
 
 
 uint8_t dataMibWriteRequest21dB[] = {0x01,              // MIB object
-                                 0x01, 0x4f, 0xf0,  // Hi freq
-                                 0x01, 0x19, 0x40,  // Lo freq
-                                 0x0e,              // RX mode, RX hi/lo channel mod, current ctrl
-                                 0x15,              // TX gain = 21 dB
-                                 0x00, 0x00,        // ZC dealy
-                                 0x02,              // PSK preamble length
-                                 0x35,              // FSK misc
-                                 0x9b, 0x58,        // FSK msb/lsb unique word
-				 0xFF, 0x02};       // checksum
+                                     0x01, 0x4f, 0xf0,  // Hi freq
+                                     0x01, 0x19, 0x40,  // Lo freq
+                                     0x0e,              // RX mode, RX hi/lo channel mod, current ctrl
+                                     0x15,              // TX gain = 21 dB
+                                     0x00, 0x00,        // ZC dealy
+                                     0x02,              // PSK preamble length
+                                     0x35,              // FSK misc
+                                     0x9b, 0x58,        // FSK msb/lsb unique word
+	                             0xFF, 0x02};       // checksum
 
 uint8_t dataMibWriteRequest31dB[] = {0x01,              // MIB object
                                      0x01, 0x4f, 0xf0,  // Hi freq
