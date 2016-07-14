@@ -67,6 +67,15 @@
 		    A test run with v1.00 has been done. A result can be seen in figure
 		    serial_comm1.PNG.
 
+		    v1.11 - Test run ./ser_com1 2, result see figure serial_comm2.PNG.
+		            Test run ./ser_com1 3, result see figure serial_comm3.PNG.
+
+		            <1> : PA_OUT
+			    <3> : RxD, on ST7580
+			    <2> : T_REQ
+
+
+
                     N.B! Using baud rate less than 57600 does not work. Due to that pin BR0/BR1 on
 		    ST7580 is pulled up to VDDIO.
 */

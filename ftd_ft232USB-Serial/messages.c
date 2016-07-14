@@ -52,7 +52,7 @@ void createMibWriteRequestMessage(Message* m, int length)
 // custom configuration, i.e TX_GAIN is a part of the message
 void createDlDataRequestMessage1(Message* m, int length)
 {
-  printf("Message: DL_DataRequest with Custom configuration of TX_GAIN\n");
+  printf("Message: DL_DataRequest with Custom configuration of TX_GAIN=21\n");
   m->stx      = 0x02;
   m->length   = DL_DataRequest_LengthCustom;
   m->command  = DL_DataRequest;
@@ -64,7 +64,7 @@ void createDlDataRequestMessage1(Message* m, int length)
 // custom configuration, i.e TX_GAIN is a part of the message
 void createDlDataRequestMessage2(Message* m, int length)
 {
-  printf("Message: DL_DataRequest with Custom configuration of TX_GAIN\n");
+  printf("Message: DL_DataRequest with Custom configuration of TX_GAIN=31\n");
   m->stx      = 0x02;
   m->length   = DL_DataRequest_LengthCustom;
   m->command  = DL_DataRequest;
