@@ -6,7 +6,7 @@
 
 // define commands for the local frame format
 #define MIB_WriteRequest        0x08
-#define MIB_WriteRequest_Length 15
+#define MIB_WriteRequest_Length 0x0F
 
 #define DL_DataRequest                0x50
 #define DL_DataRequest_LengthCustom   0x03  // length of payload for custom configuration (checksum not included)

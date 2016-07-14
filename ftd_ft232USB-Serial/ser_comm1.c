@@ -165,7 +165,7 @@ int main(int argc, char* argv[])
   printMessage(&msg, dataLength+CHECKSUM_LENGTH);
 
   // write message to port
-  noBytes = write(fd, &msg, dataLength+CHECKSUM_LENGTH+HEADER_LENGTH);
+  noBytes = write(fd, &msg, HEADER_LENGTH+dataLength+CHECKSUM_LENGTH);
   printf(" \nTotal number of bytes sent=%d\n", noBytes);
   printf("+-------------------------------------------------------------------------------+\n");
 
