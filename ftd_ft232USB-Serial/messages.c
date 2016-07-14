@@ -17,11 +17,12 @@ uint8_t dataMibWriteRequest[] = {0x01,              // MIB object
                                  0x01, 0x4f, 0xf0,  // Hi freq
                                  0x01, 0x19, 0x40,  // Lo freq
                                  0x0e,              // RX mode, RX hi/lo channel mod, current ctrl
-                                 0x0a,              // TX gain
+                                 0x15,              // TX gain
                                  0x00, 0x00,        // ZC dealy
                                  0x02,              // PSK preamble length
                                  0x35,              // FSK misc
-                                 0x9b,0x58};        // FSK msb/lsb unique word
+                                 0x9b, 0x58,        // FSK msb/lsb unique word
+				 0xFF, 0x02};       // checksum
 
 
 // Custom configuration - 8PSK = 0x2C, TX_GAIN = 21, payload data = 0x77, checksum = 0x010B
@@ -41,9 +42,9 @@ void createMibWriteRequestMessage(Message* m, int length)
 {
   printf("Message: MIB_WriteRequest\n");
   m->stx      = 0x02;
-  m->length   = (uint8_t)MIB_WriteRequest_Length;
+  m->length   = MIB_WriteRequest_Length;
   m->command  = MIB_WriteRequest;
-  memcpy(m->data, dataMibWriteRequest, length);
+  memcpy(m->data, dataMibWriteRequest, sizeof(dataMibWriteRequest));
   
   calculateChecksum(m->length, m->command, m->data);
 }
