@@ -22,7 +22,7 @@ void calculateChecksum(uint8_t length, uint8_t command, uint8_t* data)
     checkSum += data[i];
   }
 
-  printf("Checksum=%04x\n", checkSum);
+  printf("Calculated checksum: %04x\n\n", checkSum);
 }
 
 

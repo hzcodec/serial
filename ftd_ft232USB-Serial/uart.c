@@ -38,20 +38,16 @@ int toggleDTR(int timeValue)
   int rv;
   int status;
 
-//  useconds_t us;
-//  us = 100;
   ioctl(fd, TIOCMGET, &status);
 
   status &= ~TIOCM_DTR;
   rv = ioctl(fd, TIOCMSET, &status);
-  sleep(2);
+  sleep(1);
 
   status |= TIOCM_DTR;
   rv = ioctl(fd, TIOCMSET, &status);
-//  usleep(us);
-  sleep(2);
+  sleep(1);
 
-  //usleep(us);
   return rv;
 }
 
@@ -113,7 +109,7 @@ void configSerialPort(struct termios* portSettings)
   tcgetattr(fd, portSettings);
 
   // set output baud rate
-  cfsetospeed(portSettings, B19200);
+  cfsetospeed(portSettings, B57600);
 
   // all changes done immediately
   int rv = tcsetattr(fd, TCSANOW, portSettings);
@@ -147,6 +143,7 @@ void checkBaudRate(struct termios* portSettings)
      case B9600:   outputSpeed = "9600 Baud"; break;
      case B19200:  outputSpeed = "19200 Baud"; break;
      case B38400:  outputSpeed = "38400 Baud"; break;
+     case B57600:  outputSpeed = "57600 Baud"; break;
   }
   printf("%sOutput Baud rate : %s %s\n", KGRN, outputSpeed, KNRM);
 }

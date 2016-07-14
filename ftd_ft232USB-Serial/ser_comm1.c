@@ -14,7 +14,7 @@
 		   Length:   Byte length of data field
 		   Command:  Command type code
 		   Payload:  Data to be sent
-		   Checksum: Checksum calculated on lenght, command and payload
+		   Checksum: Checksum calculated on lenght, command and payload, N.B! bytes are swapped
 
 
 		  To communicate via a serial link use:
@@ -66,6 +66,9 @@
 		  Test run:
 		    A test run with v1.00 has been done. A result can be seen in figure
 		    serial_comm1.PNG.
+
+                    N.B! Using baud rate less than 57600 does not work. This need to be check in spec
+		    if it's possible to reconfigure.
 */
 
 #include <stdio.h>
@@ -92,10 +95,9 @@ int main(int argc, char* argv[])
   struct termios* pSerialPortSettings;
   pSerialPortSettings = &serialPortSettings;
 
-  // number of bytes written
   int noBytes    = 0;  // number of bytes written
-  int dataLength = 0;  // length of data
-  Message msg;
+  int dataLength = 0;  // length of message data field
+  Message msg;         // message structure according to the local frame format (see above)
 
   // Open up device for read/write and check status. NOCTTY - not controlling terminal
   fd = open(MODEM_DEVICE, O_RDWR | O_NOCTTY);
@@ -110,7 +112,8 @@ int main(int argc, char* argv[])
   {
     printf("To few arguments!\n");
     printf("<1> : create MIB_WriteRequest\n");
-    printf("<2> : create DL_DataRequest\n");
+    printf("<2> : create DL_DataRequest with custom configuration - TX_GAIN=21\n");
+    printf("<3> : create DL_DataRequest with custom configuration - TX_GAIN=31\n");
     printf("<9> : create PingRequest\n");
     exit(-1);
   }
@@ -129,8 +132,16 @@ int main(int argc, char* argv[])
       createMibWriteRequestMessage(&msg, dataLength);
       break;
     case 2:
-      dataLength = DL_DataRequest_Length;
-      createDlDataRequestMessage(&msg, dataLength);
+      dataLength = DL_DataRequest_LengthCustom;
+      createDlDataRequestMessage1(&msg, dataLength);
+      break;
+    case 3:
+      dataLength = DL_DataRequest_LengthCustom;
+      createDlDataRequestMessage2(&msg, dataLength);
+      break;
+    case 4:
+      dataLength = DL_DataRequest_LengthPhy;
+      createDlDataRequestMessage3(&msg, dataLength);
       break;
     case 9:
       dataLength = PingRequest_Length;
@@ -148,14 +159,14 @@ int main(int argc, char* argv[])
   checkBaudRate(pSerialPortSettings);
 
   // RTS control
-  setRTS(1);
-  setRTS(0);
+  toggleRTS(1);
 
-  printMessage(&msg, dataLength);
+  printMessage(&msg, dataLength+CHECKSUM_LENGTH);
 
   // write message to port
-  noBytes = write(fd, &msg, dataLength);
-  printf(" \nNumber of bytes sent=%d\n", noBytes);
+  noBytes = write(fd, &msg, dataLength+CHECKSUM_LENGTH+HEADER_LENGTH);
+  printf(" \nTotal number of bytes sent=%d\n", noBytes);
+  printf("+-------------------------------------------------------------------------------+\n");
 
   close(fd);
 
