@@ -116,10 +116,11 @@ int main(int argc, char* argv[])
   if (argc < 2)
   {
     printf("To few arguments!\n");
-    printf("<1> : create MIB_WriteRequest\n");
-    printf("<2> : create DL_DataRequest with custom configuration - TX_GAIN=21\n");
-    printf("<3> : create DL_DataRequest with custom configuration - TX_GAIN=31\n");
-    printf("<4> : create DL_DataRequest with PHY configuration\n");
+    printf("<1> : create MIB_WriteRequest - TX_GAIN=21 dB\n");
+    printf("<2> : create MIB_WriteRequest - TX_GAIN=31 dB\n");
+    printf("<3> : create DL_DataRequest with custom configuration - TX_GAIN=21 dB\n");
+    printf("<4> : create DL_DataRequest with custom configuration - TX_GAIN=31 dB\n");
+    printf("<5> : create DL_DataRequest with PHY configuration\n");
     printf("<9> : create PingRequest\n");
     exit(-1);
   }
@@ -138,14 +139,18 @@ int main(int argc, char* argv[])
       createMibWriteRequestMessage(&msg, dataLength);
       break;
     case 2:
-      dataLength = DL_DataRequest_LengthCustom;
-      createDlDataRequestMessage1(&msg, dataLength);
+      dataLength = MIB_WriteRequest_Length;
+      createMibWriteRequestMessage31dB(&msg, dataLength);
       break;
     case 3:
       dataLength = DL_DataRequest_LengthCustom;
-      createDlDataRequestMessage2(&msg, dataLength);
+      createDlDataRequestMessage1(&msg, dataLength);
       break;
     case 4:
+      dataLength = DL_DataRequest_LengthCustom;
+      createDlDataRequestMessage2(&msg, dataLength);
+      break;
+    case 5:
       dataLength = DL_DataRequest_LengthPhy;
       createDlDataRequestMessage3(&msg, dataLength);
       break;
@@ -172,7 +177,7 @@ int main(int argc, char* argv[])
   // write message to port
   noBytes = write(fd, &msg, HEADER_LENGTH+dataLength+CHECKSUM_LENGTH);
   printf(" \nTotal number of bytes sent=%d\n", noBytes);
-  printf("+-------------------------------------------------------------------------------+\n");
+  printf("%s+------------------------------------------------------------------------------------+%s\n", KYEL, KNRM);
 
   close(fd);
 

@@ -13,17 +13,27 @@
 #include "common.h"
 
 
-uint8_t dataMibWriteRequest[] = {0x01,              // MIB object
+uint8_t dataMibWriteRequest21dB[] = {0x01,              // MIB object
                                  0x01, 0x4f, 0xf0,  // Hi freq
                                  0x01, 0x19, 0x40,  // Lo freq
                                  0x0e,              // RX mode, RX hi/lo channel mod, current ctrl
-                                 0x15,              // TX gain
+                                 0x15,              // TX gain = 21 dB
                                  0x00, 0x00,        // ZC dealy
                                  0x02,              // PSK preamble length
                                  0x35,              // FSK misc
                                  0x9b, 0x58,        // FSK msb/lsb unique word
 				 0xFF, 0x02};       // checksum
 
+uint8_t dataMibWriteRequest31dB[] = {0x01,              // MIB object
+                                     0x01, 0x4f, 0xf0,  // Hi freq
+                                     0x01, 0x19, 0x40,  // Lo freq
+                                     0x0e,              // RX mode, RX hi/lo channel mod, current ctrl
+                                     0x1F,              // TX gain = 31 dB
+                                     0x00, 0x00,        // ZC dealy
+                                     0x02,              // PSK preamble length
+                                     0x35,              // FSK misc
+                                     0x9b, 0x58,        // FSK msb/lsb unique word
+			             0x09, 0x03};       // checksum
 
 // Custom configuration - 8PSK = 0x2C, TX_GAIN = 21, payload data = 0x77, checksum = 0x010B
 uint8_t dataDlDataRequest_TxGain21[] = {0x2C, 0x15, 0x77, 0x0B, 0x01};
@@ -40,11 +50,22 @@ uint8_t dataPingRequest[] = {0xde, 0xad, 0xbe, 0xef};
 
 void createMibWriteRequestMessage(Message* m, int length)
 {
-  printf("Message: MIB_WriteRequest\n");
+  printf("Message: MIB_WriteRequest with TX_GAIN=21 dB\n");
   m->stx      = 0x02;
   m->length   = MIB_WriteRequest_Length;
   m->command  = MIB_WriteRequest;
-  memcpy(m->data, dataMibWriteRequest, sizeof(dataMibWriteRequest));
+  memcpy(m->data, dataMibWriteRequest21dB, sizeof(dataMibWriteRequest21dB));
+  
+  calculateChecksum(m->length, m->command, m->data);
+}
+
+void createMibWriteRequestMessage31dB(Message* m, int length)
+{
+  printf("Message: MIB_WriteRequest with TX_GAIN=31 dB\n");
+  m->stx      = 0x02;
+  m->length   = MIB_WriteRequest_Length;
+  m->command  = MIB_WriteRequest;
+  memcpy(m->data, dataMibWriteRequest31dB, sizeof(dataMibWriteRequest31dB));
   
   calculateChecksum(m->length, m->command, m->data);
 }
@@ -53,7 +74,7 @@ void createMibWriteRequestMessage(Message* m, int length)
 // custom configuration, i.e TX_GAIN is a part of the message
 void createDlDataRequestMessage1(Message* m, int length)
 {
-  printf("Message: DL_DataRequest with Custom configuration of TX_GAIN=21\n");
+  printf("Message: DL_DataRequest with Custom configuration of TX_GAIN=21 dB\n");
   m->stx      = 0x02;
   m->length   = DL_DataRequest_LengthCustom;
   m->command  = DL_DataRequest;
@@ -65,7 +86,7 @@ void createDlDataRequestMessage1(Message* m, int length)
 // custom configuration, i.e TX_GAIN is a part of the message
 void createDlDataRequestMessage2(Message* m, int length)
 {
-  printf("Message: DL_DataRequest with Custom configuration of TX_GAIN=31\n");
+  printf("Message: DL_DataRequest with Custom configuration of TX_GAIN=31 dB\n");
   m->stx      = 0x02;
   m->length   = DL_DataRequest_LengthCustom;
   m->command  = DL_DataRequest;
