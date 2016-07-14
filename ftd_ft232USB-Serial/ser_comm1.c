@@ -114,6 +114,7 @@ int main(int argc, char* argv[])
     printf("<1> : create MIB_WriteRequest\n");
     printf("<2> : create DL_DataRequest with custom configuration - TX_GAIN=21\n");
     printf("<3> : create DL_DataRequest with custom configuration - TX_GAIN=31\n");
+    printf("<4> : create DL_DataRequest with PHY configuration\n");
     printf("<9> : create PingRequest\n");
     exit(-1);
   }
