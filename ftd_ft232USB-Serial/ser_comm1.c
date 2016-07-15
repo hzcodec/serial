@@ -36,9 +36,10 @@
 
 		  Also check port:
 		    > ls /dev/ttyUSB*
-
-		  This will give:
                       /dev/ttyUSB0
+
+		    > dmesg | grep ttyUSB
+                      usb 3-2: FTDI USB Serial Device converter now attached to ttyUSB0
 
 
 		  Ex. how to run:
