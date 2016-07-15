@@ -115,6 +115,7 @@ int main(int argc, char* argv[])
   // if too few arguments then jump out
   if (argc < 2)
   {
+    printf("%sTo few arguments!%s\n", KRED, KNRM);
     printHelp();
     exit(-1);
   }
@@ -153,7 +154,8 @@ int main(int argc, char* argv[])
       createPingRequestMessage(&msg, dataLength);
       break;
     default:
-      perror("Input argument not valid!");
+      printf("%sInput argument not valid!%s\n", KRED, KNRM);
+      printHelp();
       exit(-1);
   }  
 
