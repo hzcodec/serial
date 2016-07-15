@@ -74,6 +74,9 @@
                     N.B! Using baud rate less than 57600 does not work. Due to that pin BR0/BR1 on
 		    ST7580 is pulled up to VDDIO.
 		    The program is reporting incorrect baud rate (B50), however it's still working.
+
+		    N.B!!!
+		    Also note that ping request command does not send checksum. This need to be updated.
 */
 
 #include <stdio.h>
