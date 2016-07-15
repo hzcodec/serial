@@ -45,7 +45,7 @@ uint8_t dataDlDataRequest_TxGain31[] = {0x2C, 0x1F, 0x77, 0x15, 0x01};
 uint8_t dataDlDataRequest_PHY[] = {0x24,0x77, 0xED, 0x00};
 
 // payload data, 0xdeadbeef
-uint8_t dataPingRequest[] = {0xde, 0xad, 0xbe, 0xef};
+uint8_t dataPingRequest[] = {0xde, 0xad, 0xbe, 0xef, 0x68, 0x03};
 
 
 // request message with TX_GAIN=21 dB
@@ -119,7 +119,7 @@ void createPingRequestMessage(Message* m, int length)
   m->stx      = 0x02;
   m->length   = (uint8_t)PingRequest_Length;
   m->command  = PingRequest;
-  memcpy(m->data, dataPingRequest, length);
+  memcpy(m->data, dataPingRequest, sizeof(dataPingRequest));
 
   calculateChecksum(m->length, m->command, m->data);
 }

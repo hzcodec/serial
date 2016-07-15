@@ -12,8 +12,8 @@
 #define DL_DataRequest_LengthCustom   0x03  // length of payload for custom configuration (checksum not included)
 #define DL_DataRequest_LengthPhy      0x02  // length of payload for PHY configuration (checksum not included)
 
-#define PingRequest             0x2c
-#define PingRequest_Length      4
+#define PingRequest        0x2c
+#define PingRequest_Length 0x04 
 
 // misc defines
 #define MAX_DATA_MESSAGE_SIZE 25
