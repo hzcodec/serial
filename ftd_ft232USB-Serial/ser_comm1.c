@@ -130,7 +130,7 @@ int main(int argc, char* argv[])
   {
     case 1:
       dataLength = MIB_WriteRequest_Length;
-      createMibWriteRequestMessage(&msg, dataLength);
+      createMibWriteRequestMessage21dB(&msg, dataLength);
       break;
     case 2:
       dataLength = MIB_WriteRequest_Length;

@@ -49,7 +49,7 @@ uint8_t dataPingRequest[] = {0xde, 0xad, 0xbe, 0xef};
 
 
 // request message with TX_GAIN=21 dB
-void createMibWriteRequestMessage(Message* m, int length)
+void createMibWriteRequestMessage21dB(Message* m, int length)
 {
   printf("Message: MIB_WriteRequest with TX_GAIN=21 dB\n");
   m->stx      = 0x02;
