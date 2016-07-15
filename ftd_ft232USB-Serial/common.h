@@ -43,5 +43,6 @@ typedef struct {
 void calculateChecksum(uint8_t length, uint8_t command, uint8_t* data);
 void printHeadLine();
 void printMessage(Message* msg, int length);
+void printHelp();
 
 #endif /* not defined COMMON_H */

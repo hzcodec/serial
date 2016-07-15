@@ -48,6 +48,7 @@ uint8_t dataDlDataRequest_PHY[] = {0x24,0x77, 0xED, 0x00};
 uint8_t dataPingRequest[] = {0xde, 0xad, 0xbe, 0xef};
 
 
+// request message with TX_GAIN=21 dB
 void createMibWriteRequestMessage(Message* m, int length)
 {
   printf("Message: MIB_WriteRequest with TX_GAIN=21 dB\n");
@@ -59,6 +60,8 @@ void createMibWriteRequestMessage(Message* m, int length)
   calculateChecksum(m->length, m->command, m->data);
 }
 
+
+// request message with TX_GAIN=31 dB
 void createMibWriteRequestMessage31dB(Message* m, int length)
 {
   printf("Message: MIB_WriteRequest with TX_GAIN=31 dB\n");
@@ -72,7 +75,7 @@ void createMibWriteRequestMessage31dB(Message* m, int length)
 
 
 // custom configuration, i.e TX_GAIN is a part of the message
-void createDlDataRequestMessage1(Message* m, int length)
+void createDlDataRequestMessage21dB(Message* m, int length)
 {
   printf("Message: DL_DataRequest with Custom configuration of TX_GAIN=21 dB\n");
   m->stx      = 0x02;
@@ -83,8 +86,9 @@ void createDlDataRequestMessage1(Message* m, int length)
   calculateChecksum(m->length, m->command, m->data);
 }
 
+
 // custom configuration, i.e TX_GAIN is a part of the message
-void createDlDataRequestMessage2(Message* m, int length)
+void createDlDataRequestMessage31dB(Message* m, int length)
 {
   printf("Message: DL_DataRequest with Custom configuration of TX_GAIN=31 dB\n");
   m->stx      = 0x02;
@@ -95,8 +99,9 @@ void createDlDataRequestMessage2(Message* m, int length)
   calculateChecksum(m->length, m->command, m->data);
 }
 
+
 // PHY configuration
-void createDlDataRequestMessage3(Message* m, int length)
+void createDlDataRequestMessagePhy(Message* m, int length)
 {
   printf("Message: DL_DataRequest with PHY configuration of TX_GAIN\n");
   m->stx      = 0x02;

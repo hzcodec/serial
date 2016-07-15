@@ -115,13 +115,7 @@ int main(int argc, char* argv[])
   // if too few arguments then jump out
   if (argc < 2)
   {
-    printf("To few arguments!\n");
-    printf("<1> : create MIB_WriteRequest - TX_GAIN=21 dB\n");
-    printf("<2> : create MIB_WriteRequest - TX_GAIN=31 dB\n");
-    printf("<3> : create DL_DataRequest with custom configuration - TX_GAIN=21 dB\n");
-    printf("<4> : create DL_DataRequest with custom configuration - TX_GAIN=31 dB\n");
-    printf("<5> : create DL_DataRequest with PHY configuration\n");
-    printf("<9> : create PingRequest\n");
+    printHelp();
     exit(-1);
   }
 
@@ -144,15 +138,15 @@ int main(int argc, char* argv[])
       break;
     case 3:
       dataLength = DL_DataRequest_LengthCustom;
-      createDlDataRequestMessage1(&msg, dataLength);
+      createDlDataRequestMessage21dB(&msg, dataLength);
       break;
     case 4:
       dataLength = DL_DataRequest_LengthCustom;
-      createDlDataRequestMessage2(&msg, dataLength);
+      createDlDataRequestMessage31dB(&msg, dataLength);
       break;
     case 5:
       dataLength = DL_DataRequest_LengthPhy;
-      createDlDataRequestMessage3(&msg, dataLength);
+      createDlDataRequestMessagePhy(&msg, dataLength);
       break;
     case 9:
       dataLength = PingRequest_Length;

@@ -50,3 +50,15 @@ void printMessage(Message* msg, int length)
   }
 }
 
+
+void printHelp()
+{
+    printf("%sTo few arguments!%s\n", KRED, KNRM);
+    printf("  <1> : create MIB_WriteRequest - TX_GAIN=21 dB\n");
+    printf("  <2> : create MIB_WriteRequest - TX_GAIN=31 dB\n");
+    printf("  <3> : create DL_DataRequest with custom configuration - TX_GAIN=21 dB\n");
+    printf("  <4> : create DL_DataRequest with custom configuration - TX_GAIN=31 dB\n");
+    printf("  <5> : create DL_DataRequest with PHY configuration\n");
+    printf("  <9> : create PingRequest\n");
+}
+
