@@ -92,6 +92,7 @@ void openSerialPort(struct termios* portSettings)
   portSettings->c_cflag &= ~CS8;                     // 8 data bits
   portSettings->c_cflag &= ~CRTSCTS;                 // turn of flow control
   portSettings->c_cflag &= ~(IXON | IXOFF | IXANY);  // turn off sw based flow control
+  portSettings->c_cflag |= CBAUDEX;                  // enable baud rate 57600
 
   // TCIFLUSH  - flush data received but not read
   // TCOFLUSH  - flush data written but not transmitted
