@@ -39,14 +39,13 @@ typedef struct
    
    struct
    {
-     char*  field;
-     uint8_t data; 
+     char*  field;   // field name of payload data
+     uint8_t data;   // payload data
    } DataObject[17];
 
 } Message;
 
 
-//void calculateChecksum(uint8_t length, uint8_t command, uint8_t* data);
 uint16_t calculateChecksum(Message* data);
 void printHeadLine();
 void printMessage(Message* msg, int length);

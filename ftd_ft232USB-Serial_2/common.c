@@ -22,7 +22,6 @@ uint16_t calculateChecksum(Message* msg)
     checkSum += msg->DataObject[i].data;
   }
 
-  ///printf("Calculated checksum: %04x\n\n", checkSum);
   return checkSum;
 }
 
@@ -39,15 +38,15 @@ void printHeadLine()
 
 void printMessage(Message* msg, int length)
 {
-  printf(".......................\n");
-  printf("STX - Length - Command\n");
-  printf("0x%02x", msg->stx);
-  printf("  0x%02x", msg->length);
-  printf("     0x%02x\n\n", msg->command);
-  printf("Payload\n");
+  printf("%s\n\tHeader%s\n", KGRN, KNRM);
+  printf("stx :     0x%02x\n", msg->stx);
+  printf("Length :  0x%02x\n", msg->length);
+  printf("Command : 0x%02x\n\n", msg->command);
+
+  printf("%s\tPayload%s\n", KGRN, KNRM);
   for (int i=0; i<length; i++)
   {
-    printf("[%2d] - %-10s : %02x\n", i, msg->DataObject[i].field, msg->DataObject[i].data);
+    printf("[%2d] - %-10s : 0x%02x\n", i, msg->DataObject[i].field, msg->DataObject[i].data);
   }
 }
 
