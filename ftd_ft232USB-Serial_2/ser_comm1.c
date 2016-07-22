@@ -134,26 +134,26 @@ int main(int argc, char* argv[])
       dataLength = MIB_WriteRequest_Length;
       createMibWriteRequestMessage21dB(&msg, dataLength);
       break;
-    case 2:
-      dataLength = MIB_WriteRequest_Length;
-      createMibWriteRequestMessage31dB(&msg, dataLength);
-      break;
-    case 3:
-      dataLength = DL_DataRequest_LengthCustom;
-      createDlDataRequestMessage21dB(&msg, dataLength);
-      break;
-    case 4:
-      dataLength = DL_DataRequest_LengthCustom;
-      createDlDataRequestMessage31dB(&msg, dataLength);
-      break;
-    case 5:
-      dataLength = DL_DataRequest_LengthPhy;
-      createDlDataRequestMessagePhy(&msg, dataLength);
-      break;
-    case 9:
-      dataLength = PingRequest_Length;
-      createPingRequestMessage(&msg, dataLength);
-      break;
+//    case 2:
+//      dataLength = MIB_WriteRequest_Length;
+//      createMibWriteRequestMessage31dB(&msg, dataLength);
+//      break;
+//    case 3:
+//      dataLength = DL_DataRequest_LengthCustom;
+//      createDlDataRequestMessage21dB(&msg, dataLength);
+//      break;
+//    case 4:
+//      dataLength = DL_DataRequest_LengthCustom;
+//      createDlDataRequestMessage31dB(&msg, dataLength);
+//      break;
+//    case 5:
+//      dataLength = DL_DataRequest_LengthPhy;
+//      createDlDataRequestMessagePhy(&msg, dataLength);
+//      break;
+//    case 9:
+//      dataLength = PingRequest_Length;
+//      createPingRequestMessage(&msg, dataLength);
+//      break;
     default:
       printf("%sInput argument not valid!%s\n", KRED, KNRM);
       printHelp();
