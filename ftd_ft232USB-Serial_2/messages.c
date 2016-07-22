@@ -108,7 +108,7 @@ void createMibWriteRequestMessage21dB(Message* m, int length)
     m->DataObject[i].field = PhysicalConfigurationObject21dB.DataObject[i].field;
     m->DataObject[i].data = PhysicalConfigurationObject21dB.DataObject[i].data;
   }
-  
+
 //  calculateChecksum(m->length, m->command, m->data);
 }
 
@@ -129,6 +129,7 @@ void createMibWriteRequestMessage31dB(Message* m, int length)
 //  calculateChecksum(m->length, m->command, m->data);
 }
 
+
 // custom message with TX_GAIN=21 dB
 void createCustomRequestMessage21dB(Message* m, int length)
 {
@@ -146,7 +147,7 @@ void createCustomRequestMessage21dB(Message* m, int length)
 }
 
 
-// custom message with TX_GAIN=21 dB
+// physical message
 void createPhysicalRequestMessage(Message* m, int length)
 {
   printf("%sMessage: MIB_WriteRequest - at ", KGRN);
@@ -166,7 +167,7 @@ void createPhysicalRequestMessage(Message* m, int length)
 // ping message
 void createPingMessage(Message* m, int length)
 {
-  printf("%sMessage: MIB_WriteRequest - at ", KGRN);
+  printf("%sMessage: PingRequest - at ", KGRN);
   m->stx = PingConfigurationObject.stx;
   m->length = PingConfigurationObject.length;
   m->command = PingConfigurationObject.command;
@@ -179,66 +180,4 @@ void createPingMessage(Message* m, int length)
 //  calculateChecksum(m->length, m->command, m->data);
 }
 
-// request message with TX_GAIN=31 dB
-//void createMibWriteRequestMessage31dB(Message* m, int length)
-//{
-//  printf("Message: MIB_WriteRequest - TX_GAIN=31 dB, Data=0x77\n");
-//  m->stx      = 0x02;
-//  m->length   = MIB_WriteRequest_Length;
-//  m->command  = MIB_WriteRequest;
-//  memcpy(m->data, dataMibWriteRequest31dB, sizeof(dataMibWriteRequest31dB));
-//  
-//  calculateChecksum(m->length, m->command, m->data);
-//}
-//
-//
-//// custom configuration, i.e TX_GAIN is a part of the message
-//void createDlDataRequestMessage21dB(Message* m, int length)
-//{
-//  printf("Message: DL_DataRequest with Custom configuration of TX_GAIN=21 dB, Data=0x77\n");
-//  m->stx      = 0x02;
-//  m->length   = DL_DataRequest_LengthCustom;
-//  m->command  = DL_DataRequest;
-//  memcpy(m->data, dataDlDataRequest_TxGain21, sizeof(dataDlDataRequest_TxGain21));
-//  
-//  calculateChecksum(m->length, m->command, m->data);
-//}
-//
-//
-//// custom configuration, i.e TX_GAIN is a part of the message
-//void createDlDataRequestMessage31dB(Message* m, int length)
-//{
-//  printf("Message: DL_DataRequest with Custom configuration of TX_GAIN=31 dB, Data=0x77\n");
-//  m->stx      = 0x02;
-//  m->length   = DL_DataRequest_LengthCustom;
-//  m->command  = DL_DataRequest;
-//  memcpy(m->data, dataDlDataRequest_TxGain31, sizeof(dataDlDataRequest_TxGain31));
-//  
-//  calculateChecksum(m->length, m->command, m->data);
-//}
-//
-//
-//// PHY configuration
-//void createDlDataRequestMessagePhy(Message* m, int length)
-//{
-//  printf("Message: DL_DataRequest with PHY configuration of TX_GAIN\n");
-//  m->stx      = 0x02;
-//  m->length   = DL_DataRequest_LengthPhy;
-//  m->command  = DL_DataRequest;
-//  memcpy(m->data, dataDlDataRequest_PHY, sizeof(dataDlDataRequest_PHY));
-//  
-//  calculateChecksum(m->length, m->command, m->data);
-//}
-//
-//
-//void createPingRequestMessage(Message* m, int length)
-//{
-//  printf("Message: PingRequest\n");
-//  m->stx      = 0x02;
-//  m->length   = (uint8_t)PingRequest_Length;
-//  m->command  = PingRequest;
-//  memcpy(m->data, dataPingRequest, sizeof(dataPingRequest));
-//
-//  calculateChecksum(m->length, m->command, m->data);
-//}
 
