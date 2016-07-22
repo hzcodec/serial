@@ -138,10 +138,10 @@ int main(int argc, char* argv[])
       dataLength = DL_DataRequest_LengthCustom;
       createCustomRequestMessage21dB(&msg, dataLength);
       break;
-//    case 3:
-//      dataLength = DL_DataRequest_LengthCustom;
-//      createDlDataRequestMessage21dB(&msg, dataLength);
-//      break;
+    case 4:
+      dataLength = DL_DataRequest_LengthPhy;
+      createPhysicalRequestMessage(&msg, dataLength);
+      break;
 //    case 4:
 //      dataLength = DL_DataRequest_LengthCustom;
 //      createDlDataRequestMessage31dB(&msg, dataLength);

@@ -48,24 +48,28 @@ Message PhysicalConfigurationObject21dB = {
                                           };
 
 Message CustomConfigurationObject21dB = {
-                                            0x02, DL_DataRequest_LengthCustom, DL_DataRequest,
-                                             {
-                                               {"8PSK",     0x2c},
-                                               {"TX Gain",  0x15},
-                                               {"Payload",  0x77},
-                                               {"Checksum", 0x0b},
-                                               {"",         0x01},
-                                             }
-                                          };
+                                          0x02, DL_DataRequest_LengthCustom, DL_DataRequest,
+                                           {
+                                             {"8PSK",     0x2c},
+                                             {"TX Gain",  0x15},
+                                             {"Payload",  0x77},
+                                             {"Checksum", 0x0b},
+                                             {"",         0x01},
+                                           }
+                                        };
 
-// Custom configuration - 8PSK = 0x2C, TX_GAIN = 21, payload data = 0x77, checksum = 0x010B
-//uint8_t dataDlDataRequest_TxGain21[] = {0x2C, 0x15, 0x77, 0x0B, 0x01};
+Message PhysicalConfigurationObject = {
+                                        0x02, DL_DataRequest_LengthPhy, DL_DataRequest,
+                                         {
+                                           {"8PSK",     0x24},
+                                           {"Payload",  0x77},
+                                           {"Checksum", 0xed},
+                                           {"",         0x00},
+                                         }
+                                      };
 
 // Custom configuration - 8PSK = 0x2C, TX_GAIN = 31, payload data = 0x77, checksum = 0x0115
 //uint8_t dataDlDataRequest_TxGain31[] = {0x2C, 0x1F, 0x77, 0x15, 0x01};
-
-// PHY configuration - 8PSK = 0x24, payload data = 0x77, checksum = 0x00ED
-//uint8_t dataDlDataRequest_PHY[] = {0x24,0x77, 0xED, 0x00};
 
 // payload data, 0xdeadbeef
 //uint8_t dataPingRequest[] = {0xde, 0xad, 0xbe, 0xef, 0x68, 0x03};
@@ -99,6 +103,23 @@ void createCustomRequestMessage21dB(Message* m, int length)
   {
     m->DataObject[i].field = CustomConfigurationObject21dB.DataObject[i].field;
     m->DataObject[i].data = CustomConfigurationObject21dB.DataObject[i].data;
+  }
+  
+//  calculateChecksum(m->length, m->command, m->data);
+}
+
+
+// custom message with TX_GAIN=21 dB
+void createPhysicalRequestMessage(Message* m, int length)
+{
+  printf("%sMessage: MIB_WriteRequest - at ", KGRN);
+  m->stx = PhysicalConfigurationObject.stx;
+  m->length = PhysicalConfigurationObject.length;
+  m->command = PhysicalConfigurationObject.command;
+  for (int i=0; i<(int)length+2; i++)
+  {
+    m->DataObject[i].field = PhysicalConfigurationObject.DataObject[i].field;
+    m->DataObject[i].data = PhysicalConfigurationObject.DataObject[i].data;
   }
   
 //  calculateChecksum(m->length, m->command, m->data);
