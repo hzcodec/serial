@@ -3,7 +3,7 @@
     Date        : ons  8 jun 2016 10:10:56 CEST
     File        : messages.c
     Reference   : -
-    Description : Create ST7580 messages.
+    Description : Create ST7580 local frame format messages.
 */
 
 #include <stdio.h>
@@ -12,17 +12,6 @@
 #include <string.h>     /* memcpy  */
 #include "common.h"
 
-
-//uint8_t dataMibWriteRequest21dB[] = {0x01,              // MIB object
-//                                     0x01, 0x4f, 0xf0,  // Hi freq
-//                                     0x01, 0x19, 0x40,  // Lo freq
-//                                     0x0e,              // RX mode, RX hi/lo channel mod, current ctrl
-//                                     0x15,              // TX gain = 21 dB
-//                                     0x00, 0x00,        // ZC dealy
-//                                     0x02,              // PSK preamble length
-//                                     0x35,              // FSK misc
-//                                     0x9b, 0x58,        // FSK msb/lsb unique word
-//	                             0xFF, 0x02};       // checksum
 
 //uint8_t dataMibWriteRequest31dB[] = {0x01,              // MIB object
 //                                     0x01, 0x4f, 0xf0,  // Hi freq
@@ -58,6 +47,17 @@ Message PhysicalConfigurationObject21dB = {
                                              }
                                           };
 
+Message CustomConfigurationObject21dB = {
+                                            0x02, DL_DataRequest_LengthCustom, DL_DataRequest,
+                                             {
+                                               {"8PSK",     0x2c},
+                                               {"TX Gain",  0x15},
+                                               {"Payload",  0x77},
+                                               {"Checksum", 0x0b},
+                                               {"",         0x01},
+                                             }
+                                          };
+
 // Custom configuration - 8PSK = 0x2C, TX_GAIN = 21, payload data = 0x77, checksum = 0x010B
 //uint8_t dataDlDataRequest_TxGain21[] = {0x2C, 0x15, 0x77, 0x0B, 0x01};
 
@@ -74,14 +74,31 @@ Message PhysicalConfigurationObject21dB = {
 // request message with TX_GAIN=21 dB
 void createMibWriteRequestMessage21dB(Message* m, int length)
 {
-  printf("Message: MIB_WriteRequest - TX_GAIN=21 dB\n");
+  printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB at ", KGRN);
   m->stx = PhysicalConfigurationObject21dB.stx;
   m->length = PhysicalConfigurationObject21dB.length;
   m->command = PhysicalConfigurationObject21dB.command;
-  for (int i=0; i<17; i++)
+  for (int i=0; i<(int)length+2; i++)
   {
     m->DataObject[i].field = PhysicalConfigurationObject21dB.DataObject[i].field;
     m->DataObject[i].data = PhysicalConfigurationObject21dB.DataObject[i].data;
+  }
+  
+//  calculateChecksum(m->length, m->command, m->data);
+}
+
+
+// custom message with TX_GAIN=21 dB
+void createCustomRequestMessage21dB(Message* m, int length)
+{
+  printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB at ", KGRN);
+  m->stx = CustomConfigurationObject21dB.stx;
+  m->length = CustomConfigurationObject21dB.length;
+  m->command = CustomConfigurationObject21dB.command;
+  for (int i=0; i<(int)length+2; i++)
+  {
+    m->DataObject[i].field = CustomConfigurationObject21dB.DataObject[i].field;
+    m->DataObject[i].data = CustomConfigurationObject21dB.DataObject[i].data;
   }
   
 //  calculateChecksum(m->length, m->command, m->data);

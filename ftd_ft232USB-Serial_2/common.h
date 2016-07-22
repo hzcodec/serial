@@ -31,14 +31,6 @@
 #define KCYN "\x1B[36m"
 #define KWHT "\x1B[37m"
 
-// data structure of message
-//typedef struct {
-//   uint8_t stx;      // start of text delimiter
-//   uint8_t length;   // length of data field
-//   uint8_t command;  // command type
-//   uint8_t data[MAX_DATA_MESSAGE_SIZE]; // data
-//} Message;
-
 typedef struct 
 {
    uint8_t stx;      // start of text delimiter

@@ -134,10 +134,10 @@ int main(int argc, char* argv[])
       dataLength = MIB_WriteRequest_Length;
       createMibWriteRequestMessage21dB(&msg, dataLength);
       break;
-//    case 2:
-//      dataLength = MIB_WriteRequest_Length;
-//      createMibWriteRequestMessage31dB(&msg, dataLength);
-//      break;
+    case 3:
+      dataLength = DL_DataRequest_LengthCustom;
+      createCustomRequestMessage21dB(&msg, dataLength);
+      break;
 //    case 3:
 //      dataLength = DL_DataRequest_LengthCustom;
 //      createDlDataRequestMessage21dB(&msg, dataLength);
