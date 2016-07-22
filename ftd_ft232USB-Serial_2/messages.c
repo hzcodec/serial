@@ -99,7 +99,7 @@ Message PingConfigurationObject = {
 // request message with TX_GAIN=21 dB
 void createMibWriteRequestMessage21dB(Message* m, int length)
 {
-  printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB at ", KGRN);
+  printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB\n", KGRN);
   m->stx = PhysicalConfigurationObject21dB.stx;
   m->length = PhysicalConfigurationObject21dB.length;
   m->command = PhysicalConfigurationObject21dB.command;
@@ -109,14 +109,15 @@ void createMibWriteRequestMessage21dB(Message* m, int length)
     m->DataObject[i].data = PhysicalConfigurationObject21dB.DataObject[i].data;
   }
 
-//  calculateChecksum(m->length, m->command, m->data);
+  uint16_t rv = calculateChecksum(m);
+  printf("Calculated checksum: %04x\n", rv);
 }
 
 
 // request message with TX_GAIN=31 dB
 void createMibWriteRequestMessage31dB(Message* m, int length)
 {
-  printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB at ", KGRN);
+  printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB\n", KGRN);
   m->stx = PhysicalConfigurationObject31dB.stx;
   m->length = PhysicalConfigurationObject31dB.length;
   m->command = PhysicalConfigurationObject31dB.command;
@@ -126,14 +127,15 @@ void createMibWriteRequestMessage31dB(Message* m, int length)
     m->DataObject[i].data = PhysicalConfigurationObject31dB.DataObject[i].data;
   }
   
-//  calculateChecksum(m->length, m->command, m->data);
+  uint16_t rv = calculateChecksum(m);
+  printf("Calculated checksum: %04x\n", rv);
 }
 
 
 // custom message with TX_GAIN=21 dB
 void createCustomRequestMessage21dB(Message* m, int length)
 {
-  printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB at ", KGRN);
+  printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB\n", KGRN);
   m->stx = CustomConfigurationObject21dB.stx;
   m->length = CustomConfigurationObject21dB.length;
   m->command = CustomConfigurationObject21dB.command;
@@ -143,14 +145,15 @@ void createCustomRequestMessage21dB(Message* m, int length)
     m->DataObject[i].data = CustomConfigurationObject21dB.DataObject[i].data;
   }
   
-//  calculateChecksum(m->length, m->command, m->data);
+  uint16_t rv = calculateChecksum(m);
+  printf("Calculated checksum: %04x\n", rv);
 }
 
 
 // physical message
 void createPhysicalRequestMessage(Message* m, int length)
 {
-  printf("%sMessage: MIB_WriteRequest - at ", KGRN);
+  printf("%sMessage: MIB_WriteRequest\n", KGRN);
   m->stx = PhysicalConfigurationObject.stx;
   m->length = PhysicalConfigurationObject.length;
   m->command = PhysicalConfigurationObject.command;
@@ -160,14 +163,15 @@ void createPhysicalRequestMessage(Message* m, int length)
     m->DataObject[i].data = PhysicalConfigurationObject.DataObject[i].data;
   }
   
-//  calculateChecksum(m->length, m->command, m->data);
+  uint16_t rv = calculateChecksum(m);
+  printf("Calculated checksum: %04x\n", rv);
 }
 
 
 // ping message
 void createPingMessage(Message* m, int length)
 {
-  printf("%sMessage: PingRequest - at ", KGRN);
+  printf("%sMessage: PingRequest\n", KGRN);
   m->stx = PingConfigurationObject.stx;
   m->length = PingConfigurationObject.length;
   m->command = PingConfigurationObject.command;
@@ -177,7 +181,8 @@ void createPingMessage(Message* m, int length)
     m->DataObject[i].data = PingConfigurationObject.DataObject[i].data;
   }
   
-//  calculateChecksum(m->length, m->command, m->data);
+  uint16_t rv = calculateChecksum(m);
+  printf("Calculated checksum: %04x\n", rv);
 }
 
 

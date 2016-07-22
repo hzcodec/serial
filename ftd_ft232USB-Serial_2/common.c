@@ -11,18 +11,19 @@
 #include <inttypes.h>
 #include "common.h"
 
-void calculateChecksum(uint8_t length, uint8_t command, uint8_t* data)
+uint16_t calculateChecksum(Message* msg)
 {
   uint16_t checkSum = 0x0000;
 
-  checkSum = checkSum + length + command;
+  checkSum = msg->length + msg->command;
 
-  for (int i=0; i<(int)length; i++)
+  for (int i=0; i<(int)msg->length; i++)
   {
-    checkSum += data[i];
+    checkSum += msg->DataObject[i].data;
   }
 
-  printf("Calculated checksum: %04x\n\n", checkSum);
+  ///printf("Calculated checksum: %04x\n\n", checkSum);
+  return checkSum;
 }
 
 

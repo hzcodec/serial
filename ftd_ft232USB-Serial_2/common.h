@@ -46,7 +46,8 @@ typedef struct
 } Message;
 
 
-void calculateChecksum(uint8_t length, uint8_t command, uint8_t* data);
+//void calculateChecksum(uint8_t length, uint8_t command, uint8_t* data);
+uint16_t calculateChecksum(Message* data);
 void printHeadLine();
 void printMessage(Message* msg, int length);
 void printHelp();
