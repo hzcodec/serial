@@ -78,6 +78,11 @@ void createMibWriteRequestMessage21dB(Message* m, int length)
   m->stx = PhysicalConfigurationObject21dB.stx;
   m->length = PhysicalConfigurationObject21dB.length;
   m->command = PhysicalConfigurationObject21dB.command;
+  for (int i=0; i<17; i++)
+  {
+    m->DataObject[i].field = PhysicalConfigurationObject21dB.DataObject[i].field;
+    m->DataObject[i].data = PhysicalConfigurationObject21dB.DataObject[i].data;
+  }
   
 //  calculateChecksum(m->length, m->command, m->data);
 }

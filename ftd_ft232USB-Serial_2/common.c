@@ -43,11 +43,11 @@ void printMessage(Message* msg, int length)
   printf("0x%02x", msg->stx);
   printf("  0x%02x", msg->length);
   printf("     0x%02x\n\n", msg->command);
-//  printf("Payload\n");
-//  for (int i=0; i<length; i++)
-//  {
-//    printf("[%d] - 0x%02x\n", i, msg->data[i]);
-//  }
+  printf("Payload\n");
+  for (int i=0; i<length; i++)
+  {
+    printf("[%2d] - %-10s : %02x\n", i, msg->DataObject[i].field, msg->DataObject[i].data);
+  }
 }
 
 
