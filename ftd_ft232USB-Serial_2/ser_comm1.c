@@ -143,17 +143,13 @@ int main(int argc, char* argv[])
       createCustomRequestMessage21dB(&msg, dataLength);
       break;
     case 4:
+      dataLength = DL_DataRequest_LengthCustom;
+      createCustomRequestMessage31dB(&msg, dataLength);
+      break;
+    case 5:
       dataLength = DL_DataRequest_LengthPhy;
       createPhysicalRequestMessage(&msg, dataLength);
       break;
-//    case 4:
-//      dataLength = DL_DataRequest_LengthCustom;
-//      createDlDataRequestMessage31dB(&msg, dataLength);
-//      break;
-//    case 5:
-//      dataLength = DL_DataRequest_LengthPhy;
-//      createDlDataRequestMessagePhy(&msg, dataLength);
-//      break;
     case 9:
       dataLength = PingRequest_Length;
       createPingMessage(&msg, dataLength);

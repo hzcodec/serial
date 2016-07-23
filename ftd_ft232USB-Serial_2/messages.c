@@ -70,6 +70,17 @@ Message CustomConfigurationObject21dB = {
                                            }
                                         };
 
+Message CustomConfigurationObject31dB = {
+                                          0x02, DL_DataRequest_LengthCustom, DL_DataRequest,
+                                           {
+                                             {"8PSK",     0x2c},
+                                             {"TX Gain",  0x1f},
+                                             {"Payload",  0x77},
+                                             {"Checksum", 0x15},
+                                             {"",         0x01},
+                                           }
+                                        };
+
 Message PhysicalConfigurationObject = {
                                         0x02, DL_DataRequest_LengthPhy, DL_DataRequest,
                                          {
@@ -91,9 +102,6 @@ Message PingConfigurationObject = {
                                            {"",         0x03},
                                          }
                                       };
-
-// Custom configuration - 8PSK = 0x2C, TX_GAIN = 31, payload data = 0x77, checksum = 0x0115
-//uint8_t dataDlDataRequest_TxGain31[] = {0x2C, 0x1F, 0x77, 0x15, 0x01};
 
 
 // request message with TX_GAIN=21 dB
@@ -143,6 +151,24 @@ void createCustomRequestMessage21dB(Message* m, int length)
   {
     m->DataObject[i].field = CustomConfigurationObject21dB.DataObject[i].field;
     m->DataObject[i].data = CustomConfigurationObject21dB.DataObject[i].data;
+  }
+  
+  uint16_t rv = calculateChecksum(m);
+  printf("Calculated checksum: %04x\n", rv);
+}
+
+
+// custom message with TX_GAIN=31 dB
+void createCustomRequestMessage31dB(Message* m, int length)
+{
+  printf("%sMessage: MIB_WriteRequest - TX_GAIN=31 dB\n", KGRN);
+  m->stx = CustomConfigurationObject31dB.stx;
+  m->length = CustomConfigurationObject31dB.length;
+  m->command = CustomConfigurationObject31dB.command;
+  for (int i=0; i<(int)length+2; i++)
+  {
+    m->DataObject[i].field = CustomConfigurationObject31dB.DataObject[i].field;
+    m->DataObject[i].data = CustomConfigurationObject31dB.DataObject[i].data;
   }
   
   uint16_t rv = calculateChecksum(m);
