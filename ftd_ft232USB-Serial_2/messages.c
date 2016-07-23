@@ -125,7 +125,7 @@ void createMibWriteRequestMessage21dB(Message* m, int length)
 // request message with TX_GAIN=31 dB
 void createMibWriteRequestMessage31dB(Message* m, int length)
 {
-  printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB\n", KGRN);
+  printf("%sMessage: MIB_WriteRequest - TX_GAIN=31 dB\n", KGRN);
   m->stx = PhysicalConfigurationObject31dB.stx;
   m->length = PhysicalConfigurationObject31dB.length;
   m->command = PhysicalConfigurationObject31dB.command;
