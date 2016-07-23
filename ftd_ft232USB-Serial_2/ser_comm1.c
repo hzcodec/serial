@@ -3,7 +3,7 @@
     Date        : ons  8 jun 2016 10:10:56 CEST
     File        : ser_comm1.c
     Reference   : -
-    Description : The program sends commands to ST7580 Power Line Modem.
+    Description : The program sends commands via a local frame format to ST7580 Power Line Modem.
                   
                   The protocol is a local frame format according to the following:
                   +------+---------+-----------+-------------------+-----------+
@@ -15,6 +15,24 @@
 		   Command:  Command type code
 		   Payload:  Data to be sent
 		   Checksum: Checksum calculated on lenght, command and payload, N.B! bytes are swapped
+
+                  The frame format is defined in common.h (Message struct). All frame formats are the built
+                  up in messages.c. First part is the header and the second part is the payload.
+
+
+                  Tree structure of the code:
+                    .
+                    ├── ftd_ft232USB-Serial_2
+                    │   ├── common.c
+                    │   ├── common.h
+                    │   ├── Makefile
+                    │   ├── messages.c
+                    │   ├── messages.h
+                    │   ├── ser_com1
+                    │   ├── ser_comm1.c
+                    │   ├── uart.c
+                    │   ├── uart.h
+                    └── README.md
 
 
 		  To communicate via a serial link use:
@@ -41,6 +59,11 @@
 		    > dmesg | grep ttyUSB
                       usb 3-2: FTDI USB Serial Device converter now attached to ttyUSB0
 
+                  Look at /sys/class/tty:
+                    > more /sys/class/tty/ttyUSB0/device/port_number
+
+                  More information at:
+                    >  ls /dev/serial/by-id
 
 		  Ex. how to run:
                     ./ser_com1 1
@@ -60,21 +83,8 @@
 		      make
 
 
-		  Test run:
-		    A test run with v1.00 has been done. A result can be seen in figure
-		    serial_comm1.PNG.
-
-		    v1.11 - Test run ./ser_com1 2, result see figure serial_comm2.PNG.
-		            Test run ./ser_com1 3, result see figure serial_comm3.PNG.
-
-		            <1> : PA_OUT
-			    <3> : RxD, on ST7580
-			    <2> : T_REQ
-
-
                     N.B! Using baud rate less than 57600 does not work. Due to that pin BR0/BR1 on
 		    ST7580 is pulled up to VDDIO.
-		    The program is reporting incorrect baud rate (B50), however it's still working.
 */
 
 #include <stdio.h>
