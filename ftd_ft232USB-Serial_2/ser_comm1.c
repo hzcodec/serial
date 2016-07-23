@@ -126,7 +126,7 @@ int main(int argc, char* argv[])
   // if too few arguments then jump out
   if (argc < 2)
   {
-    printf("%sTo few arguments!%s\n", KRED, KNRM);
+    printf("%s%sTo few arguments!%s\n", BOLD, KRED, KNRM);
     printHelp();
     exit(-1);
   }
@@ -165,7 +165,7 @@ int main(int argc, char* argv[])
       createPingMessage(&msg, dataLength);
       break;
     default:
-      printf("%sInput argument not valid!%s\n", KRED, KNRM);
+      printf("%s%sInput argument not valid!%s\n", BOLD, KRED, KNRM);
       printHelp();
       exit(-1);
   }  

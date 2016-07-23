@@ -30,6 +30,7 @@
 #define KMAG "\x1B[35m"
 #define KCYN "\x1B[36m"
 #define KWHT "\x1B[37m"
+#define BOLD "\x1B[1m"
 
 typedef struct 
 {
