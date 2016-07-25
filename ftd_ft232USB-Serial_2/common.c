@@ -11,12 +11,15 @@
 #include <inttypes.h>
 #include "common.h"
 
+// checksum calculated on lenght, command and payload
 uint16_t calculateChecksum(Message* msg)
 {
   uint16_t checkSum = 0x0000;
 
+  // length and command
   checkSum = msg->length + msg->command;
 
+  // now get payload also
   for (int i=0; i<(int)msg->length; i++)
   {
     checkSum += msg->DataObject[i].data;
@@ -26,6 +29,7 @@ uint16_t calculateChecksum(Message* msg)
 }
 
 
+// pretty headline ;-)
 void printHeadLine()
 {
   printf("\n%s+------------------------------------------------------------------------------------+\n", KYEL);
@@ -36,6 +40,7 @@ void printHeadLine()
 }
 
 
+// print out the whole local frame format message in console
 void printMessage(Message* msg, int length)
 {
   printf("%s\n  -- Header --%s\n", KGRN, KNRM);
