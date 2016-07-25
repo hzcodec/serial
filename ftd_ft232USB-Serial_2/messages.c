@@ -145,7 +145,7 @@ void createMibWriteRequestMessage31dB(Message* m, int length)
 void createCustomRequestMessage21dB(Message* m, int length)
 {
   printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB\n", KGRN);
-  configMessage(m, PhysicalConfigurationObject21dB, length);
+  configMessage(m, CustomConfigurationObject21dB, length);
 
   uint16_t rv = calculateChecksum(m);
   printf("Calculated checksum: %04x\n", rv);
