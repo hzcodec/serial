@@ -111,7 +111,8 @@ void createMibWriteRequestMessage21dB(Message* m, int length)
   m->stx = PhysicalConfigurationObject21dB.stx;
   m->length = PhysicalConfigurationObject21dB.length;
   m->command = PhysicalConfigurationObject21dB.command;
-  for (int i=0; i<(int)length+2; i++)
+
+  for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
     m->DataObject[i].field = PhysicalConfigurationObject21dB.DataObject[i].field;
     m->DataObject[i].data = PhysicalConfigurationObject21dB.DataObject[i].data;
@@ -129,7 +130,8 @@ void createMibWriteRequestMessage31dB(Message* m, int length)
   m->stx = PhysicalConfigurationObject31dB.stx;
   m->length = PhysicalConfigurationObject31dB.length;
   m->command = PhysicalConfigurationObject31dB.command;
-  for (int i=0; i<(int)length+2; i++)
+
+  for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
     m->DataObject[i].field = PhysicalConfigurationObject31dB.DataObject[i].field;
     m->DataObject[i].data = PhysicalConfigurationObject31dB.DataObject[i].data;
@@ -147,7 +149,8 @@ void createCustomRequestMessage21dB(Message* m, int length)
   m->stx = CustomConfigurationObject21dB.stx;
   m->length = CustomConfigurationObject21dB.length;
   m->command = CustomConfigurationObject21dB.command;
-  for (int i=0; i<(int)length+2; i++)
+
+  for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
     m->DataObject[i].field = CustomConfigurationObject21dB.DataObject[i].field;
     m->DataObject[i].data = CustomConfigurationObject21dB.DataObject[i].data;
@@ -165,7 +168,8 @@ void createCustomRequestMessage31dB(Message* m, int length)
   m->stx = CustomConfigurationObject31dB.stx;
   m->length = CustomConfigurationObject31dB.length;
   m->command = CustomConfigurationObject31dB.command;
-  for (int i=0; i<(int)length+2; i++)
+
+  for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
     m->DataObject[i].field = CustomConfigurationObject31dB.DataObject[i].field;
     m->DataObject[i].data = CustomConfigurationObject31dB.DataObject[i].data;
@@ -183,7 +187,8 @@ void createPhysicalRequestMessage(Message* m, int length)
   m->stx = PhysicalConfigurationObject.stx;
   m->length = PhysicalConfigurationObject.length;
   m->command = PhysicalConfigurationObject.command;
-  for (int i=0; i<(int)length+2; i++)
+
+  for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
     m->DataObject[i].field = PhysicalConfigurationObject.DataObject[i].field;
     m->DataObject[i].data = PhysicalConfigurationObject.DataObject[i].data;
@@ -201,7 +206,8 @@ void createPingMessage(Message* m, int length)
   m->stx = PingConfigurationObject.stx;
   m->length = PingConfigurationObject.length;
   m->command = PingConfigurationObject.command;
-  for (int i=0; i<(int)length+2; i++)
+
+  for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
     m->DataObject[i].field = PingConfigurationObject.DataObject[i].field;
     m->DataObject[i].data = PingConfigurationObject.DataObject[i].data;

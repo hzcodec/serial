@@ -6,14 +6,14 @@
 
 // define commands for the local frame format
 #define MIB_WriteRequest        0x08
-#define MIB_WriteRequest_Length 0x0F
+#define MIB_WriteRequest_Length 0x0F  // length of payload (checksum not included)
 
 #define DL_DataRequest                0x50
 #define DL_DataRequest_LengthCustom   0x03  // length of payload for custom configuration (checksum not included)
 #define DL_DataRequest_LengthPhy      0x02  // length of payload for PHY configuration (checksum not included)
 
 #define PingRequest        0x2c
-#define PingRequest_Length 0x04 
+#define PingRequest_Length 0x04 // length of payload (checksum not included)
 
 // misc defines
 #define MAX_DATA_MESSAGE_SIZE 25
