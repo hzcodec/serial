@@ -104,13 +104,20 @@ Message PingConfigurationObject = {
                                       };
 
 
+// configure header
+void configHeader(Message* msg, Message configObj)
+{
+  msg->stx = configObj.stx;
+  msg->length = configObj.length;
+  msg->command = configObj.command;
+}
+
+
 // request message with TX_GAIN=21 dB
 void createMibWriteRequestMessage21dB(Message* m, int length)
 {
   printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB\n", KGRN);
-  m->stx = PhysicalConfigurationObject21dB.stx;
-  m->length = PhysicalConfigurationObject21dB.length;
-  m->command = PhysicalConfigurationObject21dB.command;
+  configHeader(m, PhysicalConfigurationObject21dB);
 
   for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
@@ -127,9 +134,8 @@ void createMibWriteRequestMessage21dB(Message* m, int length)
 void createMibWriteRequestMessage31dB(Message* m, int length)
 {
   printf("%sMessage: MIB_WriteRequest - TX_GAIN=31 dB\n", KGRN);
-  m->stx = PhysicalConfigurationObject31dB.stx;
-  m->length = PhysicalConfigurationObject31dB.length;
-  m->command = PhysicalConfigurationObject31dB.command;
+  configHeader(m, PhysicalConfigurationObject31dB);
+
 
   for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
@@ -146,9 +152,7 @@ void createMibWriteRequestMessage31dB(Message* m, int length)
 void createCustomRequestMessage21dB(Message* m, int length)
 {
   printf("%sMessage: MIB_WriteRequest - TX_GAIN=21 dB\n", KGRN);
-  m->stx = CustomConfigurationObject21dB.stx;
-  m->length = CustomConfigurationObject21dB.length;
-  m->command = CustomConfigurationObject21dB.command;
+  configHeader(m, PhysicalConfigurationObject21dB);
 
   for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
@@ -165,9 +169,7 @@ void createCustomRequestMessage21dB(Message* m, int length)
 void createCustomRequestMessage31dB(Message* m, int length)
 {
   printf("%sMessage: MIB_WriteRequest - TX_GAIN=31 dB\n", KGRN);
-  m->stx = CustomConfigurationObject31dB.stx;
-  m->length = CustomConfigurationObject31dB.length;
-  m->command = CustomConfigurationObject31dB.command;
+  configHeader(m, CustomConfigurationObject31dB);
 
   for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
@@ -184,9 +186,7 @@ void createCustomRequestMessage31dB(Message* m, int length)
 void createPhysicalRequestMessage(Message* m, int length)
 {
   printf("%sMessage: MIB_WriteRequest\n", KGRN);
-  m->stx = PhysicalConfigurationObject.stx;
-  m->length = PhysicalConfigurationObject.length;
-  m->command = PhysicalConfigurationObject.command;
+  configHeader(m, PhysicalConfigurationObject);
 
   for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
@@ -203,9 +203,7 @@ void createPhysicalRequestMessage(Message* m, int length)
 void createPingMessage(Message* m, int length)
 {
   printf("%sMessage: PingRequest\n", KGRN);
-  m->stx = PingConfigurationObject.stx;
-  m->length = PingConfigurationObject.length;
-  m->command = PingConfigurationObject.command;
+  configHeader(m, PingConfigurationObject);
 
   for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
