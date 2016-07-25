@@ -1,7 +1,7 @@
 #ifndef MESSAGES_H
 #define MESSAGES_H
 
-void configHeader(Message* msg, Message configObj);
+void configMessage(Message* msg, Message configObj);
 void createMibWriteRequestMessage21dB(Message* m, int length);
 void createMibWriteRequestMessage31dB(Message* m, int length);
 void createCustomRequestMessage21dB(Message* m, int length);
