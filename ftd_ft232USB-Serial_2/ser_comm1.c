@@ -85,6 +85,16 @@
 
                     N.B! Using baud rate less than 57600 does not work. Due to that pin BR0/BR1 on
 		    ST7580 is pulled up to VDDIO.
+
+		    Test run:
+		      TX in the figures are transmitted data from PC to EVALKITST7580.
+		      RX in the figures are responses from EVALKITST7580 to PC.
+
+		      Figure request_21dB.png is showing the result after "./serial_com1 1" and "./serial_com1 5".
+		      Figure request_31dB.png is showing the result after "./serial_com1 2" and "./serial_com1 5".
+		      Figure custom_config_21dB.png is showing the result after "./serial_com1 3".
+		      Figure custom_config_31dB.png is showing the result after "./serial_com1 4".
+		      Figure response_from_kit.png is showing the response from EVALKITST7580.
 */
 
 #include <stdio.h>
