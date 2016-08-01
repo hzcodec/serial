@@ -95,6 +95,7 @@
 		      Figure custom_config_21dB.png is showing the result after "./serial_com1 3".
 		      Figure custom_config_31dB.png is showing the result after "./serial_com1 4".
 		      Figure response_from_kit.png is showing the response from EVALKITST7580.
+		      Figure ping_request.png is showing the result after "./serial_com1 9".
 */
 
 #include <stdio.h>
