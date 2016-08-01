@@ -100,16 +100,16 @@ Message PhysicalConfigurationObject = {
                                       };
 
 Message PingConfigurationObject = {
-                                     0x02, PingRequest_Length, PingRequest, // header
-                                     {0xde, 0xad, 0xbe, 0xef, 0x68, 0x03},  // payload
-				     {
-                                       {"Payload"},  
-                                       {""},         
-                                       {""},         
-                                       {""},         
-                                       {"Checksum"}, 
-                                       {""},
-                                     }
+                                    0x02, PingRequest_Length, PingRequest, // header
+                                    {0xde, 0xad, 0xbe, 0xef, 0x68, 0x03},  // payload
+				    {
+                                      {"Payload"},                         // field names of payload
+                                      {""},
+                                      {""},
+                                      {""},
+                                      {"Checksum"},
+                                      {""},
+                                    }
                                    };
 
 
