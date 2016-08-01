@@ -37,12 +37,12 @@ typedef struct
    uint8_t stx;      // start of text delimiter
    uint8_t length;   // length of data field
    uint8_t command;  // command type
+   uint8_t data[MAX_DATA_MESSAGE_SIZE]; // data
    
    struct
    {
-     char*  field;   // field name of payload data
-     uint8_t data;   // payload data
-   } DataObject[17];
+     char*   field;   // field name of payload data
+   } FieldName[17];
 
 } Message;
 

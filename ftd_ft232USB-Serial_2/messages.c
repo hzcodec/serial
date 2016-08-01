@@ -14,94 +14,103 @@
 
 
 Message PhysicalConfigurationObject21dB = {
-                                            0x02, MIB_WriteRequest_Length, MIB_WriteRequest,
-                                             {
-                                               {"MIB object", 0x01},
-                                               {"Hi freq",    0x01},
-                                               {"",           0x4f},
-                                               {"",           0xf0},
-                                               {"Lo freq",    0x01},
-                                               {"",           0x19},
-                                               {"",           0x40},
-                                               {"RX mode",    0x0e},
-                                               {"TX Gain",    0x15},
-                                               {"ZC delay",   0x00},
-                                               {"",           0x00},
-                                               {"PSK length", 0x02},
-                                               {"FSK misc",   0x35},
-                                               {"FSK msb",    0x9b},
-                                               {"FSK lsb",    0x58},
-                                               {"Checksum",   0xff},
-                                               {"",           0x02},
-                                             }
+                                            0x02, MIB_WriteRequest_Length, MIB_WriteRequest,  // header
+                                            {0x01, 0x01, 0x4f, 0xf0, 0x01, 0x19, 0x40, 0x0e, 0x15, 0x00, 0x00, 0x02, 0x35, 0x9b, 0x58, 0xff, 0x02}, // payload
+                                            {
+                                              {"MIB object"},  // field name of payload
+                                              {"Hi freq"},
+                                              {""},
+                                              {""},
+                                              {"Lo freq"},
+                                              {""},
+                                              {""},
+                                              {"RX mode"},
+                                              {"TX Gain"},
+                                              {"ZC delay"},
+                                              {""},
+                                              {"PSK length"},
+                                              {"FSK misc"},
+                                              {"FSK msb"},
+                                              {"FSK lsb"},
+                                              {"Checksum"},
+                                              {""},
+                                           }
                                           };
+
 
 Message PhysicalConfigurationObject31dB = {
-                                            0x02, MIB_WriteRequest_Length, MIB_WriteRequest,
-                                             {
-                                               {"MIB object", 0x01},
-                                               {"Hi freq",    0x01},
-                                               {"",           0x4f},
-                                               {"",           0xf0},
-                                               {"Lo freq",    0x01},
-                                               {"",           0x19},
-                                               {"",           0x40},
-                                               {"RX mode",    0x0e},
-                                               {"TX Gain",    0x1f},
-                                               {"ZC delay",   0x00},
-                                               {"",           0x00},
-                                               {"PSK length", 0x02},
-                                               {"FSK misc",   0x35},
-                                               {"FSK msb",    0x9b},
-                                               {"FSK lsb",    0x58},
-                                               {"Checksum",   0x09},
-                                               {"",           0x03},
-                                             }
+                                            0x02, MIB_WriteRequest_Length, MIB_WriteRequest, // header
+                                            {0x01, 0x01, 0x4f, 0xf0, 0x01, 0x19, 0x40, 0x0e, 0x1f, 0x00, 0x00, 0x02, 0x35, 0x9b, 0x58, 0x09, 0x03}, // payload
+                                            {
+                                              {"MIB object"}, // field names of payload
+                                              {"Hi freq"},
+                                              {""},
+                                              {""},
+                                              {"Lo freq"},
+                                              {""},
+                                              {""},
+                                              {"RX mode"},
+                                              {"TX Gain"},
+                                              {"ZC delay"},
+                                              {""},
+                                              {"PSK length"},
+                                              {"FSK misc"},
+                                              {"FSK msb"},
+                                              {"FSK lsb"},
+                                              {"Checksum"},
+                                              {""},
+                                            }
                                           };
 
+
 Message CustomConfigurationObject21dB = {
-                                          0x02, DL_DataRequest_LengthCustom, DL_DataRequest,
-                                           {
-                                             {"8PSK",     0x2c},
-                                             {"TX Gain",  0x15},
-                                             {"Payload",  0x77},
-                                             {"Checksum", 0x0b},
-                                             {"",         0x01},
-                                           }
+                                          0x02, DL_DataRequest_LengthCustom, DL_DataRequest, // header
+                                          {0x2c, 0x15, 0x77, 0x0b, 0x01}, // payload
+                                          {
+                                            {"8PSK"},    // field names of payload
+                                            {"TX Gain"},
+                                            {"Payload"},
+                                            {"Checksum"},
+                                            {""},
+                                          }
                                         };
 
+
 Message CustomConfigurationObject31dB = {
-                                          0x02, DL_DataRequest_LengthCustom, DL_DataRequest,
-                                           {
-                                             {"8PSK",     0x2c},
-                                             {"TX Gain",  0x1f},
-                                             {"Payload",  0x77},
-                                             {"Checksum", 0x15},
-                                             {"",         0x01},
-                                           }
+                                          0x02, DL_DataRequest_LengthCustom, DL_DataRequest,  //header
+                                          {0x2c, 0x1f, 0x77, 0x15, 0x01},                     //payload
+                                          {
+                                            {"8PSK"},                                        // field names of payload
+                                            {"TX Gain"},
+                                            {"Payload"},
+                                            {"Checksum"},
+                                            {""},
+                                          }
                                         };
 
 Message PhysicalConfigurationObject = {
-                                        0x02, DL_DataRequest_LengthPhy, DL_DataRequest,
-                                         {
-                                           {"8PSK",     0x24},
-                                           {"Payload",  0x77},
-                                           {"Checksum", 0xed},
-                                           {"",         0x00},
-                                         }
+                                        0x02, DL_DataRequest_LengthPhy, DL_DataRequest, // header 
+                                        {0x24, 0x77, 0xed, 0x00},                       // payload
+                                        {
+				          {"8PSK"},                                     // field names of payload
+				          {"Payload"}, 
+				          {"Checksum"},
+				          {""},      
+				        }
                                       };
 
 Message PingConfigurationObject = {
-                                        0x02, PingRequest_Length, PingRequest,
-                                         {
-                                           {"Payload",  0xde},
-                                           {"",         0xad},
-                                           {"",         0xbe},
-                                           {"",         0xef},
-                                           {"Checksum", 0x68},
-                                           {"",         0x03},
-                                         }
-                                      };
+                                     0x02, PingRequest_Length, PingRequest, // header
+                                     {0xde, 0xad, 0xbe, 0xef, 0x68, 0x03},  // payload
+				     {
+                                       {"Payload"},  
+                                       {""},         
+                                       {""},         
+                                       {""},         
+                                       {"Checksum"}, 
+                                       {""},
+                                     }
+                                   };
 
 
 // configure message
@@ -113,8 +122,8 @@ void configMessage(Message* msg, Message configObj, int length)
 
   for (int i=0; i<(int)length+CHECKSUM_LENGTH; i++)
   {
-    msg->DataObject[i].field = configObj.DataObject[i].field;
-    msg->DataObject[i].data = configObj.DataObject[i].data;
+    msg->data[i] = configObj.data[i];
+    msg->FieldName[i].field = configObj.FieldName[i].field;
   }
 }
 
@@ -183,5 +192,4 @@ void createPingMessage(Message* m, int length)
   uint16_t rv = calculateChecksum(m);
   printf("Calculated checksum: %04x\n", rv);
 }
-
 

@@ -22,7 +22,7 @@ uint16_t calculateChecksum(Message* msg)
   // now get payload also
   for (int i=0; i<(int)msg->length; i++)
   {
-    checkSum += msg->DataObject[i].data;
+    checkSum += msg->data[i];
   }
 
   return checkSum;
@@ -51,7 +51,7 @@ void printMessage(Message* msg, int length)
   printf("%s  -- Payload --%s\n", KGRN, KNRM);
   for (int i=0; i<length; i++)
   {
-    printf("[%2d] - %-10s : 0x%02x\n", i, msg->DataObject[i].field, msg->DataObject[i].data);
+    printf("[%2d] - %-10s : 0x%02x\n", i, msg->FieldName[i].field, msg->data[i]);
   }
 }
 
