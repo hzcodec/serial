@@ -86,7 +86,11 @@
                     N.B! Using baud rate less than 57600 does not work. Due to that pin BR0/BR1 on
 		    EVALKITST7580 is pulled up to VDDIO.
 
+
 		    Test run:
+
+		      Figure connect_st7580Kit.JPG is showing how the connector from PC is connected on EVALKITST7580 JP5.
+
 		      TX in the figures are transmitted data from PC to EVALKITST7580.
 		      RX in the figures are responses from EVALKITST7580 to PC.
 
