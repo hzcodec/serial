@@ -65,6 +65,10 @@
                   More information at:
                     >  ls /dev/serial/by-id
 
+		  Baud rate definitions:
+		    /usr/include/asm-generic/termbits.h
+
+
 		  Ex. how to run:
                     ./ser_com1 1
                     ./ser_com1 2
