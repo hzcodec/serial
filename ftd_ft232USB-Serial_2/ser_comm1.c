@@ -15,7 +15,7 @@
 		   Length:   Byte length of data field
 		   Command:  Command type code
 		   Payload:  Data to be sent
-		   Checksum: Checksum calculated on lenght, command and payload, N.B! bytes are swapped
+		   Checksum: Checksum calculated on length, command and payload, N.B! bytes are swapped
 
                   The frame format is defined in common.h (Message struct). All frame formats are the built
                   up in messages.c.

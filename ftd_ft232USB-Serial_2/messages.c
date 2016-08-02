@@ -15,7 +15,7 @@
 
 Message PhysicalConfigurationObject21dB = {
                                             0x02, MIB_WriteRequest_Length, MIB_WriteRequest,  // header
-                                            {0x01, 0x01, 0x4f, 0xf0, 0x01, 0x19, 0x40, 0x0e, 0x15, 0x00, 0x00, 0x02, 0x35, 0x9b, 0x58, 0xff, 0x02}, // payload
+                                            {0x01, 0x01, 0x4f, 0xf0, 0x01, 0x19, 0x40, 0x0e, 0x15, 0x00, 0x00, 0x02, 0x35, 0x9b, 0x58, 0xff, 0x02}, // payload + checksum
                                             {
                                               {"MIB object"},  // field name of payload
                                               {"Hi freq"},
@@ -39,7 +39,7 @@ Message PhysicalConfigurationObject21dB = {
 
 Message PhysicalConfigurationObject31dB = {
                                             0x02, MIB_WriteRequest_Length, MIB_WriteRequest, // header
-                                            {0x01, 0x01, 0x4f, 0xf0, 0x01, 0x19, 0x40, 0x0e, 0x1f, 0x00, 0x00, 0x02, 0x35, 0x9b, 0x58, 0x09, 0x03}, // payload
+                                            {0x01, 0x01, 0x4f, 0xf0, 0x01, 0x19, 0x40, 0x0e, 0x1f, 0x00, 0x00, 0x02, 0x35, 0x9b, 0x58, 0x09, 0x03}, // payload + checksum
                                             {
                                               {"MIB object"}, // field names of payload
                                               {"Hi freq"},
@@ -63,7 +63,7 @@ Message PhysicalConfigurationObject31dB = {
 
 Message CustomConfigurationObject21dB = {
                                           0x02, DL_DataRequest_LengthCustom, DL_DataRequest, // header
-                                          {0x2c, 0x15, 0x77, 0x0b, 0x01}, // payload
+                                          {0x2c, 0x15, 0x77, 0x0b, 0x01}, // payload + checksum
                                           {
                                             {"8PSK"},    // field names of payload
                                             {"TX Gain"},
@@ -75,7 +75,7 @@ Message CustomConfigurationObject21dB = {
 
 Message CustomConfigurationObject31dB = {
                                           0x02, DL_DataRequest_LengthCustom, DL_DataRequest,  //header
-                                          {0x2c, 0x1f, 0x77, 0x15, 0x01},                     //payload
+                                          {0x2c, 0x1f, 0x77, 0x15, 0x01},                     //payload + checksum
                                           {
                                             {"8PSK"},                                        // field names of payload
                                             {"TX Gain"},
@@ -87,7 +87,7 @@ Message CustomConfigurationObject31dB = {
 
 Message PhysicalConfigurationObject = {
                                         0x02, DL_DataRequest_LengthPhy, DL_DataRequest, // header 
-                                        {0x24, 0x77, 0xed, 0x00},                       // payload
+                                        {0x24, 0x77, 0xed, 0x00},                       // payload + checksum
                                         {
 				          {"8PSK"},                                     // field names of payload
 				          {"Payload"}, 
@@ -98,7 +98,7 @@ Message PhysicalConfigurationObject = {
 
 Message PingConfigurationObject = {
                                     0x02, PingRequest_Length, PingRequest, // header
-                                    {0xde, 0xad, 0xbe, 0xef, 0x68, 0x03},  // payload
+                                    {0xde, 0xad, 0xbe, 0xef, 0x68, 0x03},  // payload + checksum
 				    {
                                       {"Payload"},                         // field names of payload
                                       {""},
