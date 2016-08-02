@@ -5,6 +5,7 @@
     Reference   : -
     Description : The program sends commands via a local frame format to ST7580 Power Line Modem.
                   
+
                   The protocol is a local frame format according to the following:
                   +------+---------+-----------+-------------------+-----------+
                   | STX  | Length  | Command   | Payload           | Checksum  |
@@ -17,7 +18,7 @@
 		   Checksum: Checksum calculated on lenght, command and payload, N.B! bytes are swapped
 
                   The frame format is defined in common.h (Message struct). All frame formats are the built
-                  up in messages.c. First part is the header and the second part is the payload.
+                  up in messages.c.
 
 
                   Tree structure of the code:
@@ -35,7 +36,7 @@
                     └── README.md
 
 
-		  To communicate via a serial link use:
+		  To communicate via a serial link use (USB-RS232 Serial Cable):
                     Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
                     Red    - Vcc
                     Black  - GND
@@ -45,31 +46,32 @@
                     Orange - TxD
 
 
-                  To check if, Ltd FT232 USB-Serial (UART) IC, is connected to USB:
+                               ______________
+                              ||            ||
+                              ||            ||
+                              ||            ||
+                              ||            ||
+                              ||____________||                                 +----------------+
+                              |______________|                                 |                |
+                               \\############\\      USB-RS232 Serial Cable    | EVALKIT ST7580 |
+                                \\############\\==============================>|                |
+                                 \      ____    \                              |                |
+                                  \_____\___\____\                             +----------------+
+                              
+
+		  There are various ways to check if the USB-RS232 Cable is connected to the PC:
 		    > lsusb
-
-		  This will give (N.B! devie ID may differ):
-                      Bus 003 Device 004: ID 0403:6001 Future Technology Devices International,
-		      Ltd FT232 USB-Serial (UART) IC
-
-		  Also check port:
 		    > ls /dev/ttyUSB*
-                      /dev/ttyUSB0
-
 		    > dmesg | grep ttyUSB
-                      usb 3-2: FTDI USB Serial Device converter now attached to ttyUSB0
-
-                  Look at /sys/class/tty:
                     > more /sys/class/tty/ttyUSB0/device/port_number
-
-                  More information at:
                     >  ls /dev/serial/by-id
 
-		  Baud rate definitions:
+
+		  To find the Baud Rate definitions look at:
 		    /usr/include/asm-generic/termbits.h
 
 
-		  Ex. how to run:
+		  Ex. how to run the program:
                     ./ser_com1 1
                     ./ser_com1 2
 
