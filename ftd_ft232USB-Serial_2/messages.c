@@ -37,7 +37,6 @@ Message PhysicalConfigurationObject21dB = {
                                            }
                                           };
 
-
 Message PhysicalConfigurationObject31dB = {
                                             0x02, MIB_WriteRequest_Length, MIB_WriteRequest, // header
                                             {0x01, 0x01, 0x4f, 0xf0, 0x01, 0x19, 0x40, 0x0e, 0x1f, 0x00, 0x00, 0x02, 0x35, 0x9b, 0x58, 0x09, 0x03}, // payload
@@ -62,7 +61,6 @@ Message PhysicalConfigurationObject31dB = {
                                             }
                                           };
 
-
 Message CustomConfigurationObject21dB = {
                                           0x02, DL_DataRequest_LengthCustom, DL_DataRequest, // header
                                           {0x2c, 0x15, 0x77, 0x0b, 0x01}, // payload
@@ -74,7 +72,6 @@ Message CustomConfigurationObject21dB = {
                                             {""},
                                           }
                                         };
-
 
 Message CustomConfigurationObject31dB = {
                                           0x02, DL_DataRequest_LengthCustom, DL_DataRequest,  //header
