@@ -143,9 +143,11 @@
 			
 		printf("Bytes received: %d\n\n", bytes_read); /* Print the number of bytes read */
 
-		for(i=0; i<bytes_read; i++)	 /* printing only the received characters, either mask or cast print out */
+		for(i=0; i<bytes_read; i++)	 /* printing only the received characters, 3 ways to print out */
 		    //printf("0x%02x\n", read_buffer[i] & 0xff);
-		    printf("0x%02x\n", (unsigned char)read_buffer[i]);
+		    //printf("0x%02x\n", (unsigned char)read_buffer[i]);
+		    printf("0x%02hhx\n", read_buffer[i]);
+
 	
 		printf("\n +----------------------------------+\n\n\n");
 
