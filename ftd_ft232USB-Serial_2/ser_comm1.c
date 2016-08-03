@@ -64,7 +64,7 @@
 		    > ls /dev/ttyUSB*
 		    > dmesg | grep ttyUSB
                     > more /sys/class/tty/ttyUSB0/device/port_number
-                    >  ls /dev/serial/by-id
+                    > ls /dev/serial/by-id
 
 
 		  To find the Baud Rate definitions look at:
@@ -90,7 +90,8 @@
 
 
                     N.B! Using baud rate less than 57600 does not work. Due to that pin BR0/BR1 on
-		    EVALKITST7580 is pulled up to VDDIO.
+		    EVALKITST7580 is pulled up to VDDIO. For information about this read ST7580,
+		    multi line network system-on-chip document page 7.
 
 
 		    Test run:
